@@ -1,0 +1,51 @@
+{
+  "landing": {
+    "title": "Discover Your Superpowers!",
+    "subtitle": "Play Fun Games & Learn About Your Brain",
+    "start": "Start Screening",
+    "language_toggle": "हिंदी में बदलें",
+    "games_heading": "Games for You!"
+  },
+  "consent": {
+    "title": "Parent Consent",
+    "text": "By continuing, you agree to allow BrainBridge to anonymously collect gameplay data to help screen for early learning indicators. This is not a medical diagnosis.",
+    "agree": "I Agree",
+    "disagree": "Cancel"
+  },
+  "shell": {
+    "game": "Game",
+    "time_remaining": "Time Remaining",
+    "seconds": "s",
+    "pause": "Pause",
+    "resume": "Resume",
+    "exit": "Exit"
+  },
+  "games": {
+    "mirror": {
+      "title": "Dyslexia",
+      "subtitle": "(Reading)",
+      "instruction": "Tap the correct letter!"
+    },
+    "jump": {
+      "title": "Dyscalculia",
+      "subtitle": "(Numbers)",
+      "instruction": "Jump to the right number!"
+    },
+    "focus": {
+      "title": "ADHD",
+      "subtitle": "(Focus)",
+      "instruction": "Catch the stars, ignore the bugs!"
+    }
+  },
+  "report": {
+    "title": "Screening Results",
+    "adhd_risk": "Attention Risk",
+    "dyslexia_risk": "Reading Risk",
+    "dyscalculia_risk": "Math Risk",
+    "low": "Low",
+    "moderate": "Moderate",
+    "high": "High",
+    "download_pdf": "Download PDF Report",
+    "disclaimer": "This platform provides early screening indicators only and does not replace professional medical evaluation."
+  }
+}
