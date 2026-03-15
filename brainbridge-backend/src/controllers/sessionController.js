@@ -2,7 +2,7 @@ import Session from '../models/Session.js';
 import { successResponse, errorResponse } from '../utils/apiResponse.js';
 import { BadRequestError, NotFoundError } from '../utils/customErrors.js';
 
-export const createSession = async (req, res) => {
+export const createSession = async (req, res, next) => {
   try {
     const { child_id, language } = req.body;
     if (!child_id) {
@@ -11,11 +11,11 @@ export const createSession = async (req, res) => {
     const session = await Session.create({ child_id, language });
     return successResponse(res, session, 'Session created successfully', 201);
   } catch (error) {
-    return errorResponse(res, error.message || 'Error creating session', error.statusCode || 500);
+    next(error);
   }
 };
 
-export const getSession = async (req, res) => {
+export const getSession = async (req, res, next) => {
   try {
     const { id } = req.params;
     const session = await Session.findById(id);
@@ -24,11 +24,11 @@ export const getSession = async (req, res) => {
     }
     return successResponse(res, session);
   } catch (error) {
-    return errorResponse(res, error.message || 'Error fetching session', error.statusCode || 500);
+    next(error);
   }
 };
 
-export const updateSessionStatus = async (req, res) => {
+export const updateSessionStatus = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
@@ -38,6 +38,6 @@ export const updateSessionStatus = async (req, res) => {
     }
     return successResponse(res, session, 'Session status updated');
   } catch (error) {
-    return errorResponse(res, error.message || 'Error updating session', error.statusCode || 500);
+    next(error);
   }
 };

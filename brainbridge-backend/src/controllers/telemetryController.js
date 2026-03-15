@@ -2,7 +2,7 @@ import Telemetry from '../models/Telemetry.js';
 import { successResponse, errorResponse } from '../utils/apiResponse.js';
 import { BadRequestError } from '../utils/customErrors.js';
 
-export const saveTelemetry = async (req, res) => {
+export const saveTelemetry = async (req, res, next) => {
   try {
     const { session_id, game, reaction_time, errors, completion_time, additional_metrics } = req.body;
     
@@ -21,16 +21,16 @@ export const saveTelemetry = async (req, res) => {
 
     return successResponse(res, telemetry, 'Telemetry saved successfully', 201);
   } catch (error) {
-    return errorResponse(res, error.message || 'Error saving telemetry', error.statusCode || 500);
+    next(error);
   }
 };
 
-export const getSessionTelemetry = async (req, res) => {
+export const getSessionTelemetry = async (req, res, next) => {
   try {
     const { sessionId } = req.params;
     const telemetry = await Telemetry.find({ session_id: sessionId });
     return successResponse(res, telemetry);
   } catch (error) {
-    return errorResponse(res, error.message || 'Error fetching telemetry', 500);
+    next(error);
   }
 };

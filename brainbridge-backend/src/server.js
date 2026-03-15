@@ -1,35 +1,23 @@
 import 'dotenv/config';
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import morgan from 'morgan';
+import app from './app.js';
 import connectMongo from './config/mongo.js';
 import { connectRedis } from './config/redis.js';
 
-const app = express();
-
-// Middleware
-app.use(express.json());
-app.use(cors());
-app.use(helmet());
-app.use(morgan('dev'));
-
 // Connect Databases
-connectMongo();
-connectRedis();
+const startServer = async () => {
+  try {
+    await connectMongo();
+    await connectRedis();
 
-// Routes
-import sessionRoutes from './routes/sessionRoutes.js';
-import telemetryRoutes from './routes/telemetryRoutes.js';
-import predictionRoutes from './routes/predictionRoutes.js';
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`🚀 BrainBridge Backend running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('❌ Failed to start server:', error.message);
+    process.exit(1);
+  }
+};
 
-app.use('/api/sessions', sessionRoutes);
-app.use('/api/telemetry', telemetryRoutes);
-app.use('/api/predict', predictionRoutes);
+startServer();
 
-app.get('/health', (req, res) => res.json({ status: 'ok' }));
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Backend server running on port ${PORT}`);
-});

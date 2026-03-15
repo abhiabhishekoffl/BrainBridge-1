@@ -5,7 +5,7 @@ import Telemetry from '../models/Telemetry.js';
 import { successResponse, errorResponse } from '../utils/apiResponse.js';
 import { BadRequestError } from '../utils/customErrors.js';
 
-export const runPrediction = async (req, res) => {
+export const runPrediction = async (req, res, next) => {
   try {
     const { session_id } = req.body;
     
@@ -13,14 +13,12 @@ export const runPrediction = async (req, res) => {
       throw new BadRequestError('session_id is required');
     }
 
-    // 1. Fetch telemetry for this session
     const telemetryData = await Telemetry.find({ session_id });
     
     if (!telemetryData || telemetryData.length === 0) {
       throw new BadRequestError('No telemetry data found for this session');
     }
 
-    // 2. Aggregate features for ML Service
     let totalReactionTime = 0;
     let totalErrors = 0;
     let count = 0;
@@ -41,10 +39,8 @@ export const runPrediction = async (req, res) => {
       mirror_error_rate: 0.2 
     };
 
-    // 3. Call ML Service
     const mlResponse = await axios.post(`${process.env.ML_SERVICE_URL}/predict`, features);
     
-    // 4. Save results
     const result = await Result.create({
       session_id,
       adhd_risk: mlResponse.data.adhd_risk,
@@ -52,12 +48,10 @@ export const runPrediction = async (req, res) => {
       dyscalculia_risk: mlResponse.data.dyscalculia_risk
     });
 
-    // Mark session completed
     await Session.findByIdAndUpdate(session_id, { status: 'completed' });
 
     return successResponse(res, result, 'Prediction completed successfully');
   } catch (error) {
-    console.error('Prediction Error:', error.message);
-    return errorResponse(res, error.message || 'Error running prediction', error.statusCode || 500);
+    next(error);
   }
 };
