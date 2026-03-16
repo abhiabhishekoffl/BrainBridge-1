@@ -4,11 +4,13 @@ import { BadRequestError, NotFoundError } from '../utils/customErrors.js';
 
 export const createSession = async (req, res, next) => {
   try {
-    const { language } = req.body;
+    const { child_id, language } = req.body;
     const session = await Session.create({ 
       user: req.user.id, 
+      child_id,
       language 
     });
+
     return successResponse(res, session, 'Session created successfully', 201);
   } catch (error) {
     next(error);

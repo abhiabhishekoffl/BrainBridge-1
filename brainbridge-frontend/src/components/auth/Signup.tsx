@@ -21,8 +21,9 @@ export default function Signup() {
     
     const result = await signup({ username, email, password });
     if (result.success) {
-      router.push('/dashboard');
+      router.push('/');
     } else {
+
       setError(result.message || 'Signup failed');
     }
     setLoading(false);

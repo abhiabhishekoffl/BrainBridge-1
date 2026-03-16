@@ -24,10 +24,11 @@ export default function Consent({ onConfirm, onCancel }: ConsentProps) {
           <motion.div 
              animate={{ y: [0, -8, 0] }}
              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-             className="w-28 h-28 mb-12"
+             className="w-32 h-32 mb-12 flex items-center justify-center"
           >
-            <InteractiveMascot />
+            <InteractiveMascot className="w-full h-full" />
           </motion.div>
+
 
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 text-center tracking-tight uppercase">
              {t('consent.title') || "Mission Briefing"} 🌟

@@ -27,7 +27,8 @@ const FocusCatcherGame = dynamic(() => import('../games/focusCatcher/FocusCatche
 
 type FlowState = 'landing' | 'consent' | 'profile' | 'playing' | 'loading_results' | 'report';
 
-const API_BASE_URL = 'http://localhost:5000/api'; // Node backend
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+
 
 interface PredictionResults {
   adhd_risk: number;
@@ -51,8 +52,9 @@ export default function Home() {
   const handleProfileCreate = async (childId: string) => {
     try {
       const res = await axios.post(`${API_BASE_URL}/sessions`, { child_id: childId, language: 'en' });
-      setSession(res.data._id, childId);
+      setSession(res.data.data._id, childId);
       setFlow('playing');
+
     } catch (e) {
       console.error('Failed to create session, running locally mode fallback.', e);
       setSession('local_' + Date.now(), childId);
@@ -90,8 +92,9 @@ export default function Home() {
       }
       
       const res = await axios.post(`${API_BASE_URL}/predict`, { session_id: sessionId });
-      setResults(res.data);
+      setResults(res.data.data);
       setFlow('report');
+
     } catch (e) {
       console.error('Prediction failed.', e);
       setResults({ adhd_risk: 0.5, dyslexia_risk: 0.5, dyscalculia_risk: 0.5 });

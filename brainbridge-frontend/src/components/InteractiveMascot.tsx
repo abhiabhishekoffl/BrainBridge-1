@@ -2,7 +2,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
 
-export default function InteractiveMascot() {
+export default function InteractiveMascot({ className = "w-80 h-80" }: { className?: string }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -26,7 +26,8 @@ export default function InteractiveMascot() {
 
   return (
     <motion.div
-      className="relative w-80 h-80 flex items-center justify-center cursor-pointer select-none"
+      className={`relative flex items-center justify-center cursor-pointer select-none aspect-square ${className}`}
+
       initial={{ scale: 0, rotate: -180 }}
       animate={{ scale: 1, rotate: 0 }}
       transition={{ type: "spring", stiffness: 200, damping: 20 }}

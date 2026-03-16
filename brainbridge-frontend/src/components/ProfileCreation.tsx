@@ -40,10 +40,11 @@ export default function ProfileCreation({ onCreate }: ProfileProps) {
           <motion.div 
              animate={{ scale: [1, 1.05, 1] }}
              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-             className="w-28 h-28 mb-12"
+             className="w-32 h-32 mb-12 flex items-center justify-center"
           >
-            <InteractiveMascot />
+            <InteractiveMascot className="w-full h-full" />
           </motion.div>
+
 
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 text-center tracking-tight uppercase">
             Start Your Journey! 🌟
