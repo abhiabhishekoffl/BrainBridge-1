@@ -59,17 +59,17 @@ export default function ProfileCreation({ onCreate }: ProfileProps) {
                  Pick Your Adventure Hero
               </label>
 
-              <div className="flex flex-wrap justify-center gap-5">
+              <div className="flex flex-wrap justify-center gap-3">
                  {avatars.map((avatar, idx) => (
                     <motion.button
                       key={idx}
                       type="button"
-                      whileHover={{ scale: 1.15 }}
+                      whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       onClick={() => setSelectedAvatar(idx)}
-                      className={`w-20 h-20 rounded-2xl text-4xl flex items-center justify-center transition-all border-2 border-white
+                      className={`w-14 h-14 md:w-16 md:h-16 rounded-xl text-2xl md:text-3xl flex items-center justify-center transition-all border-2 border-white
                         ${selectedAvatar === idx 
-                          ? `${avatar.color} text-white ring-4 ring-offset-4 ring-indigo-200 scale-110 shadow-lg` 
+                          ? `${avatar.color} text-white ring-4 ring-offset-2 ring-indigo-200 scale-110 shadow-lg` 
                           : 'bg-slate-100 hover:bg-slate-200 text-slate-400'
                         }
                       `}
@@ -78,6 +78,7 @@ export default function ProfileCreation({ onCreate }: ProfileProps) {
                     </motion.button>
                  ))}
               </div>
+
             </div>
 
             <div className="w-full space-y-4">
