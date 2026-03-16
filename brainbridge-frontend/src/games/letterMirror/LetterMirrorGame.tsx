@@ -94,14 +94,15 @@ export default function LetterMirrorGame({ onGameComplete }: LetterMirrorProps) 
         animate={{ x: shake ? [-10, 10, -10, 10, 0] : 0 }}
         className="relative z-10 w-full flex flex-col items-center gap-10"
       >
-          <h3 className="text-xl md:text-3xl font-black text-indigo-900 mb-6 uppercase tracking-tight">
+          <h3 className="text-lg md:text-xl font-black text-indigo-900 mb-4 uppercase tracking-tight">
             Find the Magic Letter! ✨
           </h3>
           <motion.div 
-            className="text-9xl md:text-[15rem] font-black text-indigo-700 p-8 md:p-12 bg-white rounded-[3rem] shadow-2xl relative group border-4 border-indigo-200"
-            animate={{ scale: [1, 1.05, 1] }}
+            className="text-7xl md:text-9xl font-black text-indigo-700 p-6 md:p-8 bg-white rounded-3xl shadow-xl relative group border-2 border-indigo-100"
+            animate={{ scale: [1, 1.03, 1] }}
             transition={{ duration: 4, repeat: Infinity }}
           >
+
              <span className="relative z-10 drop-shadow-sm">{targetPair.correct}</span>
              <div className="absolute inset-0 bg-indigo-100 opacity-20 blur-2xl rounded-full" />
           </motion.div>
@@ -119,12 +120,13 @@ export default function LetterMirrorGame({ onGameComplete }: LetterMirrorProps) 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleSelection(option)}
-                className="bg-white border-4 border-indigo-100 shadow-xl rounded-[3rem] h-40 md:h-64 text-7xl md:text-[10rem] font-black text-indigo-900 hover:bg-indigo-50 hover:border-indigo-400 transition-all flex items-center justify-center relative group overflow-hidden"
+                className="bg-white border-2 border-indigo-50 shadow-md rounded-[2rem] h-28 md:h-40 text-5xl md:text-7xl font-black text-indigo-900 hover:bg-indigo-50 hover:border-indigo-200 transition-all flex items-center justify-center relative group overflow-hidden"
               >
                 {/* Visual Hint for Clickability */}
-                <div className="absolute bottom-0 left-0 w-full h-2 bg-indigo-200 opacity-50" />
-                <span className="relative z-10 drop-shadow-sm">{option}</span>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-indigo-200 opacity-30" />
+                <span className="relative z-10">{option}</span>
               </motion.button>
+
 
             ))}
 

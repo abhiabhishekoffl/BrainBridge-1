@@ -85,11 +85,12 @@ export default function GameShell({
                <span className="text-indigo-600 text-4xl font-black">B</span>
             </motion.div>
             <div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tighter leading-none">BrainBridge</h2>
-              <p className="text-white/80 font-black mt-2 uppercase tracking-[0.3em] text-[0.6rem] md:text-[0.7rem] bg-indigo-900/20 w-fit px-3 py-1 rounded-full">
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-white tracking-tighter leading-none">BrainBridge</h2>
+              <p className="text-white/80 font-black mt-1 uppercase tracking-[0.2em] text-[0.6rem] md:text-[0.65rem] bg-indigo-900/20 w-fit px-2 py-0.5 rounded-full">
                 {t('shell.level') || 'Level'} {gameIndex + 1}
               </p>
             </div>
+
 
           </div>
           <button 
@@ -115,18 +116,20 @@ export default function GameShell({
               className="bg-white/40 backdrop-blur-md p-6 md:p-10 flex flex-col items-center gap-6 text-center shadow-xl rounded-[3rem] border-2 border-white/50"
             >
 
-              <div className="w-40 h-40">
+              <div className="w-24 h-24 md:w-32 md:h-32">
                 <InteractiveMascot />
               </div>
-              <p className="text-white font-black text-xl md:text-2xl leading-tight drop-shadow-md">
+              <p className="text-white font-black text-base md:text-lg leading-tight drop-shadow-md">
                 &quot;{t('shell.mascot_cheer') || "You're doing amazing!"}&quot;
               </p>
+
 
             </motion.div>
           </div>
 
           {/* Game Content Area */}
-          <div className="lg:col-span-9 bg-white p-6 md:p-12 lg:p-20 relative flex flex-col justify-center min-h-[500px] md:min-h-[700px] shadow-2xl rounded-[4rem] border-8 border-indigo-100 overflow-hidden order-1 lg:order-2 text-indigo-950">
+          <div className="lg:col-span-9 bg-white p-4 md:p-8 lg:p-12 relative flex flex-col justify-center min-h-[350px] md:min-h-[500px] shadow-2xl rounded-[2.5rem] border-4 border-indigo-100 overflow-hidden order-1 lg:order-2 text-indigo-950">
+
 
 
 

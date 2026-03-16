@@ -131,24 +131,25 @@ export default function Landing({ onStart }: LandingProps) {
               )}
             </AnimatePresence>
 
-            <h2 className="text-7xl md:text-8xl font-black text-slate-900 leading-[1.05] tracking-tight">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight">
               {t('landing.title')}
             </h2>
-            <p className="text-xl md:text-2xl font-semibold text-slate-500 leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className="text-lg md:text-xl font-semibold text-slate-500 leading-relaxed max-w-xl mx-auto lg:mx-0">
               {t('landing.subtitle')}
             </p>
           </div>
           
-          <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
+          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
             {user ? (
               <>
                 <button 
                   onClick={handleLaunch}
                   disabled={isLaunching}
-                  className={`btn-primary text-xl px-16 py-8 shadow-indigo-600/20 active:translate-y-1 transition-all ${isLaunching ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  className={`btn-primary text-lg px-12 py-6 shadow-indigo-600/20 active:translate-y-1 transition-all ${isLaunching ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {isLaunching ? 'LIFT OFF! 🚀' : t('landing.start')}
                 </button>
+
                 <div className="flex items-center gap-4 px-8 py-4 bg-indigo-50 rounded-2xl border border-indigo-100 shadow-sm">
                   <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold">
                     {user.username[0].toUpperCase()}
@@ -160,17 +161,18 @@ export default function Landing({ onStart }: LandingProps) {
               <>
                 <button 
                   onClick={() => router.push('/login')}
-                  className="btn-primary text-xl px-12 py-8 shadow-indigo-600/20 active:translate-y-1 transition-all"
+                  className="btn-primary text-lg px-10 py-6 shadow-indigo-600/20 active:translate-y-1 transition-all"
                 >
                   Login 🔐
                 </button>
                 <button 
                   onClick={() => router.push('/signup')}
-                  className="px-12 py-8 bg-white border-2 border-indigo-600 text-indigo-600 rounded-[2.5rem] font-bold text-xl hover:bg-indigo-50 shadow-sm shadow-indigo-100 active:translate-y-1 transition-all"
+                  className="px-10 py-6 bg-white border-2 border-indigo-600 text-indigo-600 rounded-[2rem] font-bold text-lg hover:bg-indigo-50 shadow-sm shadow-indigo-100 active:translate-y-1 transition-all"
                 >
                   Register 🦄
                 </button>
               </>
+
             )}
           </div>
 

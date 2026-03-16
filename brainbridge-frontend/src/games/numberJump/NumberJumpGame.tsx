@@ -88,31 +88,32 @@ export default function NumberJumpGame({ onGameComplete }: NumberJumpProps) {
         animate={{ x: shake ? [-10, 10, -10, 10, 0] : 0 }}
         className="relative z-10 w-full flex flex-col items-center gap-12"
       >
-        <div className="bg-slate-50 p-6 md:p-10 flex flex-col items-center border border-slate-100 rounded-[3rem] shadow-xl max-w-2xl w-full">
-          <h3 className="text-xl md:text-3xl font-black text-slate-800 mb-8 uppercase tracking-tight text-center">
+        <div className="bg-white p-6 md:p-8 flex flex-col items-center border-2 border-sky-50 rounded-[2.5rem] shadow-xl max-w-2xl w-full">
+          <h3 className="text-xl md:text-2xl font-black text-sky-900 mb-6 uppercase tracking-tight text-center">
              Jump across the Magic Islands! 🏝️
           </h3>
-          <div className="flex items-center gap-4 md:gap-6 p-6 md:p-8 bg-white rounded-[2rem] border border-slate-100 shadow-inner">
+          <div className="flex items-center gap-4 md:gap-8 p-4 md:p-8 bg-sky-50 rounded-[2rem] border border-sky-100 shadow-inner">
              <div className="flex flex-col items-center">
-                <span className="text-3xl md:text-5xl font-black text-slate-900 opacity-40">{targetNumber - 2}</span>
-                <span className="text-[8px] md:text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-widest">Start</span>
+                <span className="text-3xl md:text-5xl font-black text-sky-900 opacity-40">{targetNumber - 2}</span>
+                <span className="text-[8px] md:text-[10px] font-bold text-sky-400 mt-1 uppercase tracking-widest">Start</span>
              </div>
-             <span className="text-xl md:text-3xl text-slate-200">➜</span>
+             <span className="text-xl md:text-2xl text-sky-200">➜</span>
              <div className="flex flex-col items-center">
-                <span className="text-3xl md:text-5xl font-black text-slate-900 opacity-70">{targetNumber - 1}</span>
-                <span className="text-[8px] md:text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-widest">Next</span>
+                <span className="text-3xl md:text-5xl font-black text-sky-900 opacity-70">{targetNumber - 1}</span>
+                <span className="text-[8px] md:text-[10px] font-bold text-sky-400 mt-1 uppercase tracking-widest">Next</span>
              </div>
-             <span className="text-xl md:text-3xl text-slate-200">➜</span>
-
+             <span className="text-xl md:text-2xl text-sky-200">➜</span>
              <motion.div 
-               className="w-16 h-16 bg-gradient-to-br from-amber-400 to-rose-500 rounded-2xl flex items-center justify-center shadow-lg border border-white/20"
+               className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg border-2 border-white"
                animate={{ scale: [1, 1.1, 1] }}
                transition={{ repeat: Infinity, duration: 2 }}
              >
-                <span className="text-3xl font-black text-white">?</span>
+                <span className="text-2xl md:text-3xl font-black text-white">?</span>
              </motion.div>
           </div>
         </div>
+
+
         
         <div className="flex flex-wrap justify-center gap-8 max-w-3xl">
           <AnimatePresence mode="popLayout">
@@ -125,13 +126,14 @@ export default function NumberJumpGame({ onGameComplete }: NumberJumpProps) {
                 whileHover={{ y: -10 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleSelection(option)}
-                className="relative group h-48 w-48 md:h-64 md:w-64"
+                className="relative group h-32 w-32 md:h-44 md:w-44"
               >
-                <div className="absolute inset-2 md:inset-4 bg-gradient-to-b from-sky-400 to-indigo-600 border-8 border-white rounded-full flex flex-col items-center justify-center shadow-2xl group-hover:from-amber-400 group-hover:scale-105 transition-all">
-                   <span className="text-6xl md:text-[8rem] font-black text-white drop-shadow-lg">{option}</span>
+                <div className="absolute inset-2 md:inset-4 bg-gradient-to-b from-sky-400 to-indigo-600 border-4 border-white rounded-full flex flex-col items-center justify-center shadow-xl group-hover:from-amber-400 group-hover:scale-105 transition-all">
+                   <span className="text-4xl md:text-6xl font-black text-white">{option}</span>
                 </div>
-                <div className="absolute -top-2 -right-2 md:-top-4 md:-right-4 text-4xl md:text-6xl">🌴</div>
+                <div className="absolute -top-1 -right-1 md:-top-2 md:-right-2 text-2xl md:text-4xl">🌴</div>
               </motion.button>
+
 
 
             ))}
