@@ -3,7 +3,7 @@
 */.npm
 */.pnp
 */.pnp.js
-
+archive/*
 node_modules/
 # Next.js
 .next/
