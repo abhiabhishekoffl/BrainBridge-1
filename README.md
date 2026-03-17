@@ -72,16 +72,16 @@
 
 ## 🌟 Overview
 
-BrainBridge is a **free, open-source** gamified AI behavioral screening tool that detects early cognitive risk indicators for **Dyslexia**, **Dyscalculia**, and **ADHD** in children aged **3–7 years**.
+BrainBridge is a **free** gamified AI behavioral screening tool that detects early cognitive risk indicators for **Dyslexia**, **Dyscalculia**, and **ADHD** in children aged **3–12 years**.
 
-Children play 3 short mini-games (4 questions each). While they play, the system silently captures **20+ behavioral signals**, engineers them into feature vectors, and runs **3 independent ML classifiers in parallel** — delivering risk assessments in **under 200ms**, on any smartphone, in **10 Indian languages**, at **₹0 cost**.
+Children play 3 short mini-games (4 questions each). While they play, the system silently captures **multiple behavioral signals**, engineers them into feature vectors, and runs **3 independent ML classifiers in parallel** — delivering risk assessments in **under few seconds**, on any smartphone, in **multiple Indian languages**, at **₹0 cost**.
 
 ```
 Child plays game (2 min)
         ↓
 React captures raw events (taps, timing, errors)
         ↓
-Node.js engineers 20+ behavioral features
+Node.js engineers multiple behavioral features
         ↓
 FastAPI runs 3 ML models in parallel (<200ms)
         ↓
@@ -90,14 +90,14 @@ Risk scores → Parent Report + Teacher Dashboard + Specialist Finder
 
 | Metric | Value |
 |--------|-------|
-| 🎯 Target Age | 3–7 years |
+| 🎯 Target Age | 3–12 years |
 | 🧩 Mini-Games | 3 (Letter Mirror · Focus Catcher · Number Jump) |
-| 📊 Behavioral Signals | 20+ per session |
+| 📊 Behavioral Signals | multiple per session |
 | 🤖 ML Models | 3 independent classifiers |
-| ⚡ Inference Time | < 200ms |
-| 🌐 Languages | 10 Indian languages |
+| ⚡ Inference Time | < few seconds |
+| 🌐 Languages | multiple Indian languages |
 | 💰 Cost to Families | ₹0 |
-| 📱 Hardware Required | None (any smartphone) |
+| 📱 Hardware Required | Any device with internet connection |
 
 ---
 
@@ -108,12 +108,12 @@ Risk scores → Parent Report + Teacher Dashboard + Specialist Finder
 | Statistic | Value |
 |-----------|-------|
 | Children with learning disabilities in India | 4.5 Crore+ |
-| Undiagnosed until age 10+ | 90% |
+| Undiagnosed until age 12+ | 90% |
 | Private diagnosis cost | ₹25,000 |
 | Psychiatrist-to-child ratio | 1 : 2,00,000 |
 | School dropout rate (undetected LDs) | 4× higher |
 
-The brain's **neuroplasticity peaks between ages 3–7**. Interventions during this window are **3–5× more effective** than at age 10+. Yet no free, accessible, multilingual tool exists for early screening in India.
+The brain's **neuroplasticity peaks between ages 3–12**. Interventions during this window are **3–5× more effective** than at age 12+. Yet no free, accessible, multilingual tool exists for early screening in India.
 
 ---
 
@@ -157,7 +157,7 @@ Direct integration pathway with DIKSHA, DISHA, Samagra Shiksha, NEP 2020, and UD
 ┌─────────────────────────────────────────────────────────────────┐
 │                     CLIENT — Next.js                            │
 │  Letter Mirror Game · Focus Catcher Game · Number Jump Game     │
-│  IndexedDB (offline) · i18next (10 languages) · HTML5 Canvas   │
+│  IndexedDB (offline) · i18next (multiple languages) · HTML5 Canvas   │
 └──────────────────────────┬──────────────────────────────────────┘
                            │ JWT · telemetry payload (JSON)
                            ▼
