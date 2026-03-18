@@ -41,14 +41,14 @@ export default function Home() {
   const [results, setResults] = useState<PredictionResults | null>(null);
   const { user, loading, logout } = useAuth();
 
-  
+
   const { sessionId, setSession, currentGameIndex, nextGame, resetSession } = useSessionStore();
   const { addTelemetry, clearTelemetry } = useTelemetryStore();
 
   const handleStart = () => setFlow('consent');
   const handleConsent = () => setFlow('profile');
   const handleCancel = () => setFlow('landing');
-  
+
   const handleProfileCreate = async (childId: string) => {
     try {
       const res = await axios.post(`${API_BASE_URL}/sessions`, { child_id: childId, language: 'en' });
@@ -68,9 +68,9 @@ export default function Home() {
       game: gameName,
       ...stats
     };
-    
+
     addTelemetry(data);
-    
+
     try {
       if (!sessionId?.startsWith('local_')) {
         await axios.post(`${API_BASE_URL}/telemetry`, data);
@@ -90,7 +90,7 @@ export default function Home() {
         }, 2000);
         return;
       }
-      
+
       const res = await axios.post(`${API_BASE_URL}/predict`, { session_id: sessionId });
       setResults(res.data.data);
       setFlow('report');
@@ -151,26 +151,26 @@ export default function Home() {
         <div className="absolute bottom-[-5%] right-[-5%] w-[40%] h-[40%] bg-rose-200/20 blur-[120px] rounded-full animate-blob [animation-delay:3s]" />
         <div className="absolute top-[20%] right-[10%] w-[35%] h-[35%] bg-amber-200/15 blur-[100px] rounded-full animate-blob [animation-delay:6s]" />
 
-        
+
         {/* Magic Floating Elements */}
-        <motion.div 
-           animate={{ rotate: 360, y: [0, -20, 0] }}
-           transition={{ rotate: { duration: 40, repeat: Infinity, ease: "linear" }, y: { duration: 5, repeat: Infinity, ease: "easeInOut" } }}
-           className="absolute top-[15%] right-[15%] text-6xl opacity-20 floating-icon"
+        <motion.div
+          animate={{ rotate: 360, y: [0, -20, 0] }}
+          transition={{ rotate: { duration: 40, repeat: Infinity, ease: "linear" }, y: { duration: 5, repeat: Infinity, ease: "easeInOut" } }}
+          className="absolute top-[15%] right-[15%] text-6xl opacity-20 floating-icon"
         >
           ✨
         </motion.div>
-        <motion.div 
-           animate={{ y: [0, 30, 0], x: [0, 10, 0] }}
-           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-           className="absolute bottom-[25%] left-[10%] text-7xl opacity-20 floating-icon"
+        <motion.div
+          animate={{ y: [0, 30, 0], x: [0, 10, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[25%] left-[10%] text-7xl opacity-20 floating-icon"
         >
           🚀
         </motion.div>
-         <motion.div 
-           animate={{ scale: [1, 1.1, 1] }}
-           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-           className="absolute top-[40%] left-[5%] text-5xl opacity-15"
+        <motion.div
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[40%] left-[5%] text-5xl opacity-15"
         >
           🎨
         </motion.div>
@@ -178,22 +178,22 @@ export default function Home() {
 
       <div className="relative z-10 w-full min-h-screen flex flex-col">
         {/* Sleek Navigation */}
-        <header className="w-full max-w-7xl mx-auto px-6 py-8 md:py-10 flex justify-between items-center bg-white/30 backdrop-blur-md rounded-b-[2.5rem] mt-0 shadow-sm border-b border-white/40">
-          <motion.div 
+        <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8 lg:py-10 flex flex-wrap justify-between items-center bg-white/30 backdrop-blur-md rounded-b-[2.5rem] mt-0 shadow-sm border-b border-white/40 gap-4">
+          <motion.div
             whileHover={{ scale: 1.02 }}
-            className="flex items-center gap-4 cursor-pointer group" 
+            className="flex items-center gap-2 sm:gap-4 cursor-pointer group"
             onClick={resetApp}
           >
-            <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-600/20 transform rotate-3 transition-transform group-hover:rotate-0">
-               <span className="text-white text-2xl font-black">B</span>
+            <div className="w-10 h-10 sm:w-14 sm:h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-600/20 transform rotate-3 transition-transform group-hover:rotate-0">
+              <span className="text-white text-xl sm:text-2xl font-black">B</span>
             </div>
             <div className="flex flex-col">
-              <h1 className="text-3xl font-black text-slate-900 tracking-tight leading-none group-hover:text-indigo-600 transition-colors">BrainBridge</h1>
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mt-1">Adventure Mode</span>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight leading-none group-hover:text-indigo-600 transition-colors">BrainBridge</h1>
+              <span className="text-[8px] sm:text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] sm:tracking-[0.3em] mt-1 hidden sm:block">Adventure Mode</span>
             </div>
           </motion.div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
             <LanguageToggle />
             {loading ? (
               <div className="w-20 h-8 bg-slate-200 animate-pulse rounded-full" />
@@ -203,7 +203,7 @@ export default function Home() {
                   {user.username.charAt(0).toUpperCase()}
                 </div>
                 <span className="font-bold text-slate-900 text-sm hidden sm:inline">{user.username}</span>
-                <button 
+                <button
                   onClick={logout}
                   className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest hover:text-indigo-800 ml-2"
                 >
@@ -213,21 +213,21 @@ export default function Home() {
             ) : (
               <div className="flex items-center gap-4">
                 <Link href="/signup">
-                  <motion.button 
+                  <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="hidden md:flex px-6 py-2.5 text-slate-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-600 transition-colors"
                   >
-                     Register
+                    Register
                   </motion.button>
                 </Link>
                 <Link href="/login">
-                  <motion.button 
+                  <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="hidden md:flex px-8 py-3 bg-slate-900 text-white rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:shadow-indigo-500/10 transition-all border border-slate-800"
                   >
-                     Login
+                    Login
                   </motion.button>
                 </Link>
               </div>
@@ -237,14 +237,14 @@ export default function Home() {
 
         </header>
 
-        <div className="flex-1 flex flex-col items-center justify-center p-6 md:p-10">
+        <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 md:p-10">
           <AnimatePresence mode="wait">
             {flow === 'landing' && <Landing key="landing" onStart={handleStart} />}
             {flow === 'consent' && <Consent key="consent" onConfirm={handleConsent} onCancel={handleCancel} />}
             {flow === 'profile' && <ProfileCreation key="profile" onCreate={handleProfileCreate} />}
             {flow === 'playing' && (
-              <motion.div 
-                key="playing" 
+              <motion.div
+                key="playing"
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.02 }}
@@ -254,8 +254,8 @@ export default function Home() {
               </motion.div>
             )}
             {flow === 'loading_results' && (
-              <motion.div 
-                key="loading" 
+              <motion.div
+                key="loading"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center glass-panel p-16 md:p-24 border-white/80 max-w-3xl shadow-2xl relative overflow-hidden"
@@ -267,25 +267,25 @@ export default function Home() {
                 </div>
 
                 <div className="relative w-40 h-40 mb-12">
-                   <div className="absolute inset-0 border-8 border-indigo-100 rounded-full" />
-                   <motion.div 
-                     animate={{ rotate: 360 }}
-                     transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                     className="absolute inset-0 border-8 border-indigo-600 border-t-transparent rounded-full" 
-                   />
-                   <div className="absolute inset-0 flex items-center justify-center">
-                     <div className="scale-125">
-                       <InteractiveMascot />
-                     </div>
-                   </div>
+                  <div className="absolute inset-0 border-8 border-indigo-100 rounded-full" />
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 border-8 border-indigo-600 border-t-transparent rounded-full"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="scale-125">
+                      <InteractiveMascot />
+                    </div>
+                  </div>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 text-center">Magical Report Pending...</h2>
                 <p className="text-slate-500 text-lg font-medium text-center max-w-sm leading-relaxed">Gathering your achievements from the adventure worlds!</p>
               </motion.div>
             )}
             {flow === 'report' && results && (
-              <motion.div 
-                key="report" 
+              <motion.div
+                key="report"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="w-full max-w-7xl"
@@ -300,12 +300,12 @@ export default function Home() {
         <footer className="w-full py-12 px-6 max-w-7xl mx-auto border-t border-slate-200 mt-12 mb-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-3 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-default">
-               <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white font-black text-xs">B</div>
-               <span className="font-bold text-slate-900 uppercase tracking-widest text-xs">BrainBridge Adventure v3.0</span>
+              <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white font-black text-xs">B</div>
+              <span className="font-bold text-slate-900 uppercase tracking-widest text-xs">BrainBridge Adventures Mode</span>
             </div>
-            
+
             <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest mt-6 md:mt-0">
-              © 2024 BrainBridge Team
+              © 2026 BrainBridge Team
             </p>
           </div>
         </footer>

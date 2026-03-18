@@ -61,7 +61,7 @@ export default function NumberJumpGame({ onGameComplete }: NumberJumpProps) {
   if (round >= ROUNDS) return null;
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 relative min-h-[600px] overflow-hidden">
+    <div className="flex flex-col items-center justify-center p-6 relative min-h-[350px] md:min-h-[500px] overflow-hidden">
       {/* Animated Water Background (Enhanced) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <motion.div 

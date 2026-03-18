@@ -69,8 +69,8 @@ export default function GameShell({
           </motion.div>
         ))}
         {/* Animated Blobs */}
-        <div className="bg-blob w-[500px] h-[500px] bg-white/10 top-[-10%] right-[-10%] animate-blob" />
-        <div className="bg-blob w-[400px] h-[400px] bg-white/10 bottom-[-5%] left-[-5%] animate-blob [animation-delay:2s]" />
+        <div className="bg-blob w-64 h-64 md:w-80 md:h-80 lg:w-[500px] lg:h-[500px] bg-white/10 top-[-10%] right-[-10%] animate-blob" />
+        <div className="bg-blob w-48 h-48 md:w-64 md:h-64 lg:w-[400px] lg:h-[400px] bg-white/10 bottom-[-5%] left-[-5%] animate-blob [animation-delay:2s]" />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col h-full gap-10">

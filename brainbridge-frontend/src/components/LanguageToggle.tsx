@@ -6,11 +6,11 @@ export default function LanguageToggle() {
   const { toggleLanguage, t } = useLanguageStore();
 
   return (
-    <motion.button 
+    <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={toggleLanguage}
-      className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full font-bold text-white border border-white/20 shadow-sm flex items-center gap-3 transition-all hover:bg-white/20"
+      className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full font-bold text-black border border-white/20 shadow-sm flex items-center gap-3 transition-all hover:bg-white/20"
     >
       <span className="text-xl">🌐</span>
       <span className="tracking-widest uppercase text-[10px] font-black opacity-80">

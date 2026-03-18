@@ -53,11 +53,11 @@ export default function Landing({ onStart }: LandingProps) {
         {/* Decorative Floating Elements (Parallax) */}
         <motion.div 
           style={{ y: yBackground }}
-          className="absolute -top-10 -left-10 w-[400px] h-[400px] bg-indigo-500/10 blur-[100px] rounded-full animate-blob pointer-events-none z-[-1]" 
+          className="absolute -top-10 -left-10 w-48 h-48 md:w-72 md:h-72 lg:w-[400px] lg:h-[400px] bg-indigo-500/10 blur-[100px] rounded-full animate-blob pointer-events-none z-[-1]" 
         />
         <motion.div 
           style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "30%"]) }}
-          className="absolute top-20 -right-20 w-[300px] h-[300px] bg-rose-500/10 blur-[90px] rounded-full animate-blob [animation-delay:2s] pointer-events-none z-[-1]" 
+          className="absolute top-20 -right-20 w-40 h-40 md:w-60 md:h-60 lg:w-[300px] lg:h-[300px] bg-rose-500/10 blur-[90px] rounded-full animate-blob [animation-delay:2s] pointer-events-none z-[-1]" 
         />
 
 
